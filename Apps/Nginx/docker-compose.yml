@@ -1,8 +1,8 @@
-name: Nginx
+name: my-nginx
 services:
-  Nginx:
+  nginx:
     image: nginx:stable
-    container_name: Nginx
+    container_name: nginx
     network_mode: bridge
     ports:
       - target: 80
@@ -20,10 +20,10 @@ services:
             en_us: Web HTTP Port
             zh_cn: Web HTTP端口
       volumes:
-        - container: /Nginx/config
+        - container: /nginx/config
           description:
-            en_us: Nginx config directory.
-            zh_cn: Nginx 配置目录
+            en_us: nginx config directory.
+            zh_cn: nginx 配置目录
 x-casaos:
   architectures:
     - amd64
@@ -32,14 +32,14 @@ x-casaos:
   author: asxs
   category: myappstore
   description:
-    zh_cn: Nginx 是一个高性能的 HTTP 和反向代理 web 服务器，同时也提供了 IMAP/POP3/SMTP 服务 。
-  developer: Nginx
-  icon: https://cdn.jsdelivr.net/gh/Guovin/Nginx@master/static/images/logo.png
-  main: Nginx
-  port_map: "8000"
+    zh_cn: nginx 是一个高性能的 HTTP 和反向代理 web 服务器，同时也提供了 IMAP/POP3/SMTP 服务 。
+  developer: nginx
+  icon: https://nginx.org/favicon.ico
+  main: nginx
+  port_map: "8001"
   scheme: http
   tagline:
     zh_cn: 一个高性能的 HTTP 和反向代理 web 服务器
   tips:
   title:
-    en_us: Nginx
+    en_us: nginx
