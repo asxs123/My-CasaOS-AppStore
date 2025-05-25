@@ -1,0 +1,52 @@
+name: iptv-api
+services:
+  iptv-api:
+    image: guovern/iptv-api:latest
+    container_name: iptv-api
+    network_mode: bridge
+    ports:
+      - target: 8000
+        published: "8000"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /home/orangepi/iptv-api/config
+        target: /iptv-api/config
+      - type: bind
+        source: /home/orangepi/iptv-api/output
+        target: /iptv-api/output
+    x-casaos:
+      ports:
+        - container: "8000"
+          description:
+            en_us: Web HTTP Port
+            zh_cn: Web HTTP端口
+      volumes:
+        - container: /iptv-api/config
+          description:
+            en_us: iptv-api config directory.
+            zh_cn: iptv-api 配置目录
+        - container: /iptv-api/output
+          description:
+            zh_cn: iptv-api 输出目录
+x-casaos:
+  architectures:
+    - amd64
+    - arm
+    - arm64
+  author: asxs
+  category: myappstore
+  description:
+    en_us: A highly customizable IPTV interface update project 📺, with customizable channel menus, automatic live stream acquisition, speed testing, and validation to generate usable results, achieving 『✨instant playback experience🚀』
+    zh_cn: 一个可高度自定义的IPTV接口更新项目📺，自定义频道菜单，自动获取直播源，测速验效后生成可用的结果，可实现『✨秒播级体验🚀』
+  developer: guovern
+  icon: https://cdn.jsdelivr.net/gh/Guovin/iptv-api@master/static/images/logo.png
+  main: iptv-api
+  port_map: "8000"
+  scheme: http
+  tagline:
+    zh_cn: IPTV电视直播源更新项目
+  tips:
+  title:
+    en_us: iptv-api
