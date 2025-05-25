@@ -11,8 +11,8 @@ services:
     restart: unless-stopped
     volumes:
       - type: bind
-        source: /home/orangepi/nginx/nginx.conf
-        target: /etc/nginx/nginx.conf
+        source: /home/orangepi/nginx
+        target: /etc/nginx
     x-casaos:
       ports:
         - container: "8001"
