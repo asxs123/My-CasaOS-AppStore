@@ -1,0 +1,45 @@
+name: Nginx
+services:
+  Nginx:
+    image: nginx:stable
+    container_name: Nginx
+    network_mode: bridge
+    ports:
+      - target: 80
+        published: "8001"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /home/orangepi/nginx/nginx.conf
+        target: /etc/nginx/nginx.conf
+    x-casaos:
+      ports:
+        - container: "8001"
+          description:
+            en_us: Web HTTP Port
+            zh_cn: Web HTTP端口
+      volumes:
+        - container: /Nginx/config
+          description:
+            en_us: Nginx config directory.
+            zh_cn: Nginx 配置目录
+x-casaos:
+  architectures:
+    - amd64
+    - arm
+    - arm64
+  author: asxs
+  category: myappstore
+  description:
+    zh_cn: Nginx 是一个高性能的 HTTP 和反向代理 web 服务器，同时也提供了 IMAP/POP3/SMTP 服务 。
+  developer: Nginx
+  icon: https://cdn.jsdelivr.net/gh/Guovin/Nginx@master/static/images/logo.png
+  main: Nginx
+  port_map: "8000"
+  scheme: http
+  tagline:
+    zh_cn: 一个高性能的 HTTP 和反向代理 web 服务器
+  tips:
+  title:
+    en_us: Nginx
