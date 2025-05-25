@@ -1,0 +1,37 @@
+name: 12306spy
+services:
+  12306spy:
+    image: 12306spy:latest
+    container_name: 12306spy
+    network_mode: bridge
+    ports:
+      - target: 8081
+        published: "8080"
+        protocol: tcp
+    restart: unless-stopped
+    x-casaos:
+      ports:
+        - container: "8081"
+          description:
+            en_us: WebUI HTTP Port
+            zh_cn: WebUI HTTP端口
+x-casaos:
+  architectures:
+    - arm64
+  author: asxs
+  category: myappstore
+  description:
+    zh_cn: 12306查票, 找到一张能上车的票
+  developer: e1roy&asxs
+  icon: https://kkgithub.com/asxs123/My-CasaOS-AppStore/Apps/12306spy/icon.ico
+  screenshot_link:
+    - https://kkgithub.com/e1roy/12306spy/blob/main/resources/image2.png
+    - https://kkgithub.com/e1roy/12306spy/blob/main/resources/img.png
+  main: 12306spy
+  port_map: "8081"
+  scheme: http
+  tagline:
+    zh_cn: 12306查票, 找到一张能上车的票
+  tips:
+  title:
+    en_us: 12306spy
