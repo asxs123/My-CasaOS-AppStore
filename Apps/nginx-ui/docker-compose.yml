@@ -50,7 +50,7 @@ x-casaos:
     - https://nginxui.com/assets/dashboard_zh_CN.png
     - https://nginxui.com/assets/logo.svg
   main: nginx-ui
-  port_map: "8001"
+  port_map: "8080"
   scheme: http
   tagline:
     zh_cn: Nginx 网络管理界面的新选择
