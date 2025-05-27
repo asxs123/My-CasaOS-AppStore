@@ -1,0 +1,59 @@
+name: nginx-ui
+services:
+  nginx-ui:
+    image: uozi/nginx-ui:latest
+    container_name: nginx-ui
+    network_mode: bridge
+    ports:
+      - target: 80
+        published: "8080"
+        protocol: tcp
+      - target: 443
+        published: "8443"
+        protocol: tcp
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - type: bind
+        source: /home/orangepi/nginx-appdata/nginx
+        target: /etc/nginx
+      - type: bind
+        source: /home/orangepi/nginx-appdata/nginx-ui
+        target: /etc/nginx-ui
+      - type: bind
+        source: /home/orangepi/nginx-appdata/var/www
+        target: /var/www
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+    x-casaos:
+      ports:
+        - container: "8080"
+          description:
+            en_us: WebUI HTTP Port
+            zh_cn: WebUI HTTP端口
+x-casaos:
+  architectures:
+    - amd64
+    - arm
+    - arm64
+  author: asxs
+  category: myappstore
+  description:
+    zh_cn: Nginx UI 是一个全新的 Nginx 网络管理界面，旨在简化 Nginx 单机和集群节点的管理和配置。 它提供实时服务器运行数据、Nginx 性能监控、ChatGPT 助手、支持大模型代码补全的代码编辑器、 一键部署 Let's Encrypt 证书的自动续签以及用户友好的网站配置编辑工具。此外，Nginx UI 还提供了在线访问 Nginx 日志、配置文件的自动测试和重载、网络终端、深色模式和自适应网页设计等功能。 Nginx UI 采用 Go 和 Vue 构建，确保在管理 Nginx 服务器时提供无缝高效的体验。
+  developer: nginx-ui
+  icon: https://nginxui.com/assets/icon.svg
+  screenshot_link:
+    - https://nginxui.com/assets/dashboard_zh_CN.png
+    - https://nginxui.com/assets/logo.svg
+  main: nginx-ui
+  port_map: "8001"
+  scheme: http
+  tagline:
+    zh_cn: Nginx 网络管理界面的新选择
+  tips:
+  title:
+    en_us: nginx-ui
