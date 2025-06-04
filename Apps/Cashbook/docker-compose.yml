@@ -33,7 +33,7 @@ services:
             zh_cn: Cashbook 配置目录
   db:
     container_name: cashbook_db
-    image: postgres
+    image: postgres:latest
     restart: unless-stopped
     shm_size: 128mb
     volumes:
