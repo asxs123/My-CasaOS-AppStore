@@ -52,9 +52,6 @@ x-casaos:
   port_map: "8888"
   scheme: http
   tagline:
-    en_us: This is a compose app converted from a legacy app (CasaOS v0.4.3 or
-      earlier)
-  thumbnail: "解锁网易云音乐客户端变灰歌曲"
-  tips:
+    en_us: "解锁网易云音乐客户端变灰歌曲"
   title:
     en_us: UnblockNeteaseMusic
