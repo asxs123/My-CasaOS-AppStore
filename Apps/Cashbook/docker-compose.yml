@@ -13,12 +13,15 @@ services:
     restart: unless-stopped
     environment:
       DATABASE_URL: "postgresql://postgres:password@cashbook_db:5432/cashbook?schema=public"
+      NUXT_DATA_PATH: "/app/data" # 数据存储未知，现在只有小票图片了，不建议修改
+      NUXT_APP_URL: "http://localhost" # 服务根路径，如果有端口号，需要加上端口号
+      NUXT_AUTH_ORIGIN: "https://localhost/api/auth" # 登录授权相关接口地址 【请自行修改域名/IP！最后要以 /api/auth 结尾！】
       NUXT_AUTH_SECRET: "auth_secret"
       NUXT_ADMIN_USERNAME: "admin"
       NUXT_ADMIN_PASSWORD: "fb35e9343a1c095ce1c1d1eb6973dc570953159441c3ee315ecfefb6ed05f4cc"
     volumes:
       - type: bind
-        source: /home/orangepi/Cashbook
+        source: /home/orangepi/Cashbook/data
         target: /app/data
     x-casaos:
       ports:
