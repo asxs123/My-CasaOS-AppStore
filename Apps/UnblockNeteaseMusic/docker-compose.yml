@@ -8,7 +8,6 @@ services:
       - bilibili
       - bilivideo
       - pyncmd
-      - ytdlp
       - -s
     environment:
       - NODE_ENV=production
