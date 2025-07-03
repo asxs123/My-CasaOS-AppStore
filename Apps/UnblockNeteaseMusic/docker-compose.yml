@@ -9,8 +9,6 @@ services:
       - bilivideo
       - pyncmd
       - ytdlp
-      - -p
-      - "1234"
       - -s
     environment:
       - NODE_ENV=production
@@ -24,12 +22,13 @@ services:
       - BLOCK_ADS=true
       - JSON_LOG=true
       - LOG_LEVEL=info
-      - LOG_FILE=app.log
       - SEARCH_ALBUM=true
     image: pan93412/unblock-netease-music-enhanced:latest
     container_name: UnblockNeteaseMusic
+    labels:
+      icon: https://user-images.githubusercontent.com/26399680/47980314-0e3f1700-e102-11e8-8857-e3436ecc8beb.png
     ports:
-      - target: 8888
+      - target: 8080
         published: "8888"
         protocol: tcp
     restart: unless-stopped
