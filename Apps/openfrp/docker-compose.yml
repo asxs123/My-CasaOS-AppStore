@@ -1,0 +1,37 @@
+name: openfrp  # 应用名称（Docker Compose 项目名，也是 CasaOS 中显示的应用名）
+services:
+    openfrp:  # 单个服务（容器）的详细配置
+        image: openfrp/frpc:latest
+        container_name: openfrp
+        network_mode: bridge
+        restart: unless-stopped
+        volumes:
+            - type: bind
+              source: /home/orangepi/openfrp
+              target: /run
+        x-casaos:
+            volumes:
+                - container: /run
+                  description:
+                    en_us: ""
+                    zh_cn: openfrp 配置目录
+x-casaos:  # CasaOS 专属扩展配置（界面展示、架构支持等）
+    architectures:
+        - amd64
+        - arm
+        - arm64
+    author: asxs  # 应用作者（可改为自己的名称）
+    category: myappstore    # 应用分类（CasaOS 界面中的分类，如“工具”“网络”）
+    description:
+        en_us: ""        # 应用英文描述（可补充为“FRP 客户端，用于内网穿透，将内网服务暴露到公网”）
+    developer: OpenFRP   # 开发者（可改为“OpenFRP 社区”）
+    icon: "https://console.openfrp.net/static/ico/favicon-D8vC0yBi.ico"  # 应用图标
+    image: https://cdn.jsdelivr.net/gh/asxs123/My-CasaOS-AppStore@master/Apps/openfrp/openfrp.png          # 应用封面图（null 表示无封面，可填图片 URL）
+    main: openfrp        # 主服务名称（对应 `services` 下的服务名，CasaOS 会以此为核心管理应用）
+    scheme: http         # 应用访问协议（FRP 是后台服务，无需前端访问，可保留默认）
+    tagline:
+        en_us:   # 应用标语（英文，提示该应用是从旧版 CasaOS 转换来的，可自定义修改）
+    tips:
+        custom: 请提前在 /home/orangepi/openfrp 目录放入 frpc.ini 配置文件  # CasaOS 界面中的提示信息（自定义文本，可改为“请提前在 /home/orangepi/openfrp 目录放入 frpc.ini 配置文件”）
+    title:
+        en_us: openfrp   # 应用英文名称（CasaOS 界面显示的名称，与顶层 `name` 一致）
