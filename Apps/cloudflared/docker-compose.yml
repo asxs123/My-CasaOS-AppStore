@@ -1,0 +1,24 @@
+name: cloudflared
+services:
+    cloudflared:
+        command:
+            - tunnel
+            - --no-autoupdate
+            - run
+            - --token
+            - your token
+        container_name: cloudflared
+        entrypoint:
+            - cloudflared
+            - --no-autoupdate
+        image: cloudflare/cloudflared:latest
+        restart: unless-stopped
+x-casaos:
+    author: asxs
+    category: myappstore
+    icon: https://one.dash.cloudflare.com/one/assets/favicon.ico
+    port_map: ""
+    scheme: http
+    title:
+        custom: ""
+        en_us: cloudflared

@@ -1,24 +1,26 @@
-name: Cashbook
+name: cashbook
 services:
   Cashbook:
-    depends_on: 
-      - "db"
-    image: dingdangdog/cashbook:latest
     container_name: Cashbook4
-    network_mode: bridge
+    depends_on: 
+      db:
+                condition: service_started
+                required: true
+    environment:
+      DATABASE_URL: postgresql://postgres:password@cashbook_db:5432/cashbook?schema=public
+      NUXT_ADMIN_PASSWORD: fb35e9343a1c095ce1c1d1eb6973dc570953159441c3ee315ecfefb6ed05f4cc
+      NUXT_ADMIN_USERNAME: admin
+      NUXT_AUTH_SECRET: auth_secret
+      #NUXT_DATA_PATH: "/app/data" # 数据存储未知，现在只有小票图片了，不建议修改
+      #NUXT_APP_URL: "http://localhost" # 服务根路径，如果有端口号，需要加上端口号
+      #NUXT_AUTH_ORIGIN: "https://localhost/api/auth" # 登录授权相关接口地址 【请自行修改域名/IP！最后要以 /api/auth 结尾！】
+    image: dingdangdog/cashbook:latest
+    #network_mode: bridge
     ports:
       - target: 9090
         published: "9090"
         protocol: tcp
     restart: unless-stopped
-    environment:
-      DATABASE_URL: "postgresql://postgres:password@cashbook_db:5432/cashbook?schema=public"
-      NUXT_DATA_PATH: "/app/data" # 数据存储未知，现在只有小票图片了，不建议修改
-      NUXT_APP_URL: "http://localhost" # 服务根路径，如果有端口号，需要加上端口号
-      NUXT_AUTH_ORIGIN: "https://localhost/api/auth" # 登录授权相关接口地址 【请自行修改域名/IP！最后要以 /api/auth 结尾！】
-      NUXT_AUTH_SECRET: "auth_secret"
-      NUXT_ADMIN_USERNAME: "admin"
-      NUXT_ADMIN_PASSWORD: "fb35e9343a1c095ce1c1d1eb6973dc570953159441c3ee315ecfefb6ed05f4cc"
     volumes:
       - type: bind
         source: /home/orangepi/Cashbook/data
@@ -36,16 +38,16 @@ services:
             zh_cn: Cashbook 配置目录
   db:
     container_name: cashbook_db
-    image: postgres:latest
+    environment:
+      POSTGRES_DB: cashbook
+      POSTGRES_PASSWORD: password # 数据库密码 【自行修改！】
+    image: postgres:17.6
     restart: unless-stopped
     shm_size: 128mb
     volumes:
       - type: bind
         source: /home/orangepi/Cashbook/postgresql/data
         target: /var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: password # 数据库密码 【自行修改！】
-      POSTGRES_DB: cashbook
 x-casaos:
   architectures:
     - amd64
@@ -58,11 +60,11 @@ x-casaos:
       适合家庭部署的私人记账本！
   developer: dingdangdog
   icon: https://doc.cashbook.oldmoon.top/favicon.png
-  screenshot_link:
-    - https://doc.cashbook.oldmoon.top/demo-dark.jpg
   main: Cashbook
   port_map: "9090"
   scheme: http
+  screenshot_link:
+    - https://doc.cashbook.oldmoon.top/demo-dark.jpg
   tagline:
     zh_cn: 适合家庭部署的私人记账本！
   thumbnail: https://doc.cashbook.oldmoon.top/demo-dark.jpg

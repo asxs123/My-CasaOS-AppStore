@@ -1,0 +1,30 @@
+name: locyanfrp
+services:
+    locyanfrp:
+        command:
+            - -c
+            - /conf/frpc.json
+        container_name: locyanfrp
+        image: locyanfrp:0.3
+        restart: unless-stopped
+        volumes:
+            - type: bind
+              source: /home/orangepi/LoCyanFrp/run
+              target: /conf
+x-casaos:
+    architectures:
+        - arm64
+    author: asxs
+    category: myappstore
+    description:
+        zh_cn: null
+    developer: asxs
+    hostname: ""
+    icon: https://www.locyanfrp.cn/favicon.ico
+    main: locyanfrp
+    port_map: ""
+    scheme: http
+    tips: null
+    title:
+        custom: locyanfrp
+        en_us: locyanfrp

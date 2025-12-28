@@ -1,8 +1,8 @@
 name: my-portainer
 services:
   portainer:
-    image: 6053537/portainer-ce:latest
     container_name: portainer
+    image: 6053537/portainer-ce:latest
     network_mode: bridge
     ports:
       - target: 9000
@@ -39,6 +39,10 @@ x-casaos:
     zh_cn: Portainer 是一个轻量级的管理界面，可让您轻松管理Docker环境。它被设计为易于使用，并提供对Docker主机和容器的完全控制。
   developer: Portainer
   icon: https://cdn.jsdelivr.net/gh/Cp0204/CasaOS-AppStore-Play@main/Apps/Portainer/icon.png
+  index: /
+  main: portainer
+  port_map: "9000"
+  scheme: http
   screenshot_link:
     - https://cdn.jsdelivr.net/gh/Cp0204/CasaOS-AppStore-Play@main/Apps/Portainer/screenshot-1.png
     - https://cdn.jsdelivr.net/gh/Cp0204/CasaOS-AppStore-Play@main/Apps/Portainer/screenshot-2.png
@@ -46,10 +50,6 @@ x-casaos:
     en_us: Lightweight Docker management UI
     zh_cn: 轻量级 Docker 管理界面
   thumbnail: https://cdn.jsdelivr.net/gh/Cp0204/CasaOS-AppStore-Play@main/Apps/Portainer/thumbnail.png
-  tips:
-  main: portainer
+  tips: null
   title:
     en_us: Portainer
-  index: /
-  port_map: "9000"
-  scheme: http

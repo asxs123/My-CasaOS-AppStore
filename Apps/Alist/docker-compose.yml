@@ -1,18 +1,18 @@
 name: my-alist
 services:
   alist:
-    image: alist666/alist:latest
     container_name: alist
+    environment:
+      PGID: "0"
+      PUID: "0"
+      UMASK: "022"
+    image: alist666/alist:latest
     network_mode: bridge
     ports:
       - target: 5244
         published: "5244"
         protocol: tcp
     restart: unless-stopped
-    environment:
-      - PUID=0
-      - PGID=0
-      - UMASK=022
     volumes:
       - type: bind
         source: /home/orangepi/alist
@@ -42,11 +42,11 @@ x-casaos:
       使用 Alist 像访问本地文件一样访问你远程网盘的文件，
   developer: Xhofe
   icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Alist/icon.png
-  screenshot_link:
-    - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Alist/screenshot-1.png
   main: alist
   port_map: "5244"
   scheme: http
+  screenshot_link:
+    - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Alist/screenshot-1.png
   tagline:
     en_us: A file list program that supports multiple storage
     zh_cn: 一个支持多种存储的文件列表程序

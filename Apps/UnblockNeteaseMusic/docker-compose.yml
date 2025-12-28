@@ -1,29 +1,22 @@
-name: UnblockNeteaseMusic
+name: unblockneteasemusic
 services:
   UnblockNeteaseMusic:
     command:
       - -o
-      - kuwo
       - kugou
       - bilibili
-      - bilivideo
       - pyncmd
       - -s
-    environment:
-      - NODE_ENV=production
-      - NODE_VERSION=22.17.0
-      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-      - SIGN_CERT=/app/server.crt
-      - SIGN_KEY=/app/server.key
-      - YARN_VERSION=1.22.22
-      - ENABLE_FLAC=true
-      - ENABLE_LOCAL_VIP=svip
-      - BLOCK_ADS=true
-      - JSON_LOG=true
-      - LOG_LEVEL=info
-      - SEARCH_ALBUM=true
-    image: pan93412/unblock-netease-music-enhanced:latest
     container_name: UnblockNeteaseMusic
+    environment:
+      BLOCK_ADS: "true"
+      ENABLE_FLAC: "true"
+      ENABLE_LOCAL_VIP: svip
+      JSON_LOG: "true"
+      LOG_LEVEL: info
+      MIN_BR: "320000"
+      SEARCH_ALBUM: "true"
+    image: pan93412/unblock-netease-music-enhanced:latest
     labels:
       icon: https://user-images.githubusercontent.com/26399680/47980314-0e3f1700-e102-11e8-8857-e3436ecc8beb.png
     ports:
@@ -43,13 +36,13 @@ x-casaos:
   author: asxs
   category: myappstore
   description:
-    en_us: "解锁网易云音乐客户端变灰歌曲"
+    en_us: 解锁网易云音乐客户端变灰歌曲
   developer: UnblockNeteaseMusic
-  icon: "https://user-images.githubusercontent.com/26399680/47980314-0e3f1700-e102-11e8-8857-e3436ecc8beb.png"
+  icon: https://user-images.githubusercontent.com/26399680/47980314-0e3f1700-e102-11e8-8857-e3436ecc8beb.png
   main: UnblockNeteaseMusic
   port_map: "8888"
   scheme: http
   tagline:
-    en_us: "解锁网易云音乐客户端变灰歌曲"
+    en_us: 解锁网易云音乐客户端变灰歌曲
   title:
     en_us: UnblockNeteaseMusic

@@ -1,0 +1,41 @@
+name: drpys
+services:
+    drpys:
+        container_name: drpys
+        image: eulac/my-drpys:latest
+        ports:
+            - target: 5757
+              published: "5757"
+              protocol: tcp
+        restart: unless-stopped
+        volumes:
+            - type: bind
+              source: /home/orangepi/drpy-node
+              target: /drpy-node/public/drpy/cs
+        x-casaos:
+            ports:
+                - container: "5757"
+                  description:
+                    en_us: Web HTTP Port
+                    zh_cn: Web HTTP端口
+            volumes:
+                - container: /drpy-node/public/drpy/cs
+                  description:
+                    zh_cn: drpys 源码目录
+x-casaos:
+    architectures:
+        - arm64
+    author: asxs
+    category: myappstore
+    description:
+        zh_cn: "nodejs作为服务端的drpy实现。全面升级异步写法。"
+    developer: hjdhnx
+    icon: ""
+    main: drpys
+    port_map: "5757"
+    scheme: http
+    tagline:
+        zh_cn: "nodejs作为服务端的drpy实现。全面升级异步写法。"
+    tips: null
+    title:
+        en_us: drpyS
