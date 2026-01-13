@@ -13,7 +13,6 @@ services:
             - --no-autoupdate
         image: cloudflare/cloudflared:latest
         restart: unless-stopped
-        x-casaos: ""
 x-casaos:
     architectures:
         - amd64
