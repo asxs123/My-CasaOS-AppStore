@@ -11,6 +11,12 @@ services:
             - type: bind
               source: /home/orangepi/LoCyanFrp/run
               target: /conf
+        x-casaos:
+            volumes:
+                - container: /conf
+                  description:
+                    en_us: locyanfrp config directory.
+                    zh_cn: locyanfrp 配置目录
 x-casaos:
     architectures:
         - arm64

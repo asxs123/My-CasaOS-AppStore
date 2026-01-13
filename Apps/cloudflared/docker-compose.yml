@@ -13,7 +13,12 @@ services:
             - --no-autoupdate
         image: cloudflare/cloudflared:latest
         restart: unless-stopped
+        x-casaos: ""
 x-casaos:
+    architectures:
+        - amd64
+        - arm
+        - arm64
     author: asxs
     category: myappstore
     icon: https://one.dash.cloudflare.com/one/assets/favicon.ico
